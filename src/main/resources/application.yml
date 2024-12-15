@@ -1,0 +1,23 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  application:
+    name: Dictionary
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 101354475686-osvqo4ng1j6mh0jhg1gnijhg228vp6e2.apps.googleusercontent.com
+            client-secret: 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
+            scope: email,profile
+server:
+  servlet:
+    session:
+      timeout: 1m

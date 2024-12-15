@@ -1,0 +1,359 @@
+body {
+    font-family: Caveat, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #F0F8FF;
+
+
+}
+#currentMonth {
+    font-size: 24px;
+    color: #333;
+    text-transform: capitalize;
+}
+h1 {
+    text-align: center;
+    color: #333;
+}
+header {
+    background-color: #F0F8FF;
+    padding: 10px 0;
+    font-size: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#app {
+
+    margin-top: 10px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-header button {
+    font-size: 1.5em;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+.day {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 10px;
+    font-size: 20px;
+    min-height: 100px;
+}
+
+.day.empty {
+    background-color: #f0f0f0;
+}
+
+.day-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.date {
+    font-size: 1.2em;
+}
+
+.weekday {
+    color: #666;
+}
+
+.tasks {
+    min-height: 20px;
+}
+
+.task {
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+    margin-bottom: 8px;  /* Добавляем отступ снизу */
+    padding: 8px;  /* Добавляем внутренние отступы */
+    border-radius: 5px;  /* Закругляем углы */
+    background-color: #f9f9f9;  /* Добавляем фоновый цвет */
+}
+
+.task:last-child {
+    margin-bottom: 0;  /* Убираем отступ у последней задачи */
+}
+
+.task:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.task.dragging {
+    opacity: 0.8;
+    transform: scale(1.05);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+
+.day.drag-over {
+    background-color: #e0e0e0;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: none;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.new-task {
+    margin-top: 10px;
+}
+
+.new-task input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.color-picker {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.color-option {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.2s;
+}
+
+.color-option:hover {
+    transform: scale(1.1);
+}
+
+
+
+
+
+@media (max-width: 600px) {
+    .day {
+        width: 100%;
+    }
+}
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header button {
+    font-size: 1.5em;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+.day {
+    min-height: 100px;
+}
+
+.day.empty {
+    background-color: #f0f0f0;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+
+#taskDate {
+    color: #666;
+    font-size: 0.9em;
+}
+
+#taskTitle {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+
+#taskTextDisplay {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+#taskTextEdit {
+    width: 100%;
+    height: 100px;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+    box-sizing: border-box;
+}
+.task.completed span {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.task input[type="checkbox"] {
+    margin-right: 5px;
+}
+#taskText {
+    width: 100%;
+    height: 100px;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.modal-buttons button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#editTask, #saveTask {
+    background-color: #4CAF50;
+    color: white;
+}
+.custom-time-input {
+    display: flex;
+    align-items: center;
+}
+
+.custom-time-input input {
+    width: 50px; /* Ширина для ввода времени */
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.time-separator {
+    font-size: 1.2em;
+    margin: 0 5px;
+}
+
+#editTask:hover, #saveTask:hover {
+    background-color: #45a049;
+}
+
+#deleteTask {
+    background-color: #f44336;
+    color: white;
+}
+.task-time {
+    font-size: 0.9em;
+    color: #000000;
+    margin-top: 5px;
+}
+
+#deleteTask:hover {
+    background-color: #da190b;
+}
+
+@media (max-width: 600px) {
+    .modal-content {
+        width: 95%;
+        margin: 5% auto;
+    }
+}
+
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.login-buttons {
+    margin-top: 20px;
+}
+
+.login-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    text-decoration: none;
+    color: white;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.google-login {
+    background-color: #4285F4;
+}
+
+.google-login:hover {
+    background-color: #357AE8;
+}
+
+

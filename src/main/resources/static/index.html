@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ежедневник</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Caveat:wght@400..700&family=Playwrite+AU+VIC:wght@100..400&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/draggable.bundle.js"></script>
+</head>
+<body>
+<header>
+    <h1>Ежедневник</h1>
+    <div id="user-info">
+        <span id="user-name"></span>
+        <a href="/login" id="login-btn">Войти</a>
+        <a href="/logout" id="logout-btn" style="display: none;">Выйти</a>
+        <input type="text" placeholder="Добавить друга">
+    </div>
+</header>
+<div id="app">
+    <div class="calendar-header">
+        <button id="prevMonth">&lt;</button>
+        <h2 id="currentMonth"></h2>
+        <button id="nextMonth">&gt;</button>
+    </div>
+    <div class="calendar"></div>
+</div>
+<div id="taskModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p id="taskDate"></p>
+        <div id="taskTitle"></div>
+        <div>
+            <label for="taskStartTime">Начало:</label>
+            <input type="time" id="taskStartTime" disabled>
+            <label for="taskEndTime">Конец:</label>
+            <input type="time" id="taskEndTime" disabled>
+
+        </div>
+        <textarea id="taskText" readonly></textarea>
+        <div class="modal-buttons">
+            <button id="editTask">Изменить</button>
+            <button id="saveTask" style="display: none;">Сохранить</button>
+            <button id="deleteTask">Удалить</button>
+        </div>
+    </div>
+
+</div>
+<script src="/script.js"></script>
+</body>
+</html>
